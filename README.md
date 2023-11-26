@@ -23,9 +23,9 @@ To set up this project manually, follow these steps:
    ```bash
    git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
    cd analysis-premier-league-racism
-Install Dependencies:
+2. Install Dependencies:
 
-bash
+```bash
 Copy code
 npm install
 Build the Project:
