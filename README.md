@@ -29,7 +29,7 @@ To set up this project manually, follow these steps:
 
    npm install
 
-3.Build the Project:
+3. Build the Project:
    
    npm run build
 
