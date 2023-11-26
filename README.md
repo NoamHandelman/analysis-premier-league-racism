@@ -20,16 +20,20 @@ The production version can be accessed at:
 To set up this project manually, follow these steps:
 
 1. Clone the Repository:
-   ```bash
+   
    git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
    cd analysis-premier-league-racism
-2. Install Dependencies:
-    ```bash
-   npm install
-3.Build the Project:
-    npm run build
+   
+3. Install Dependencies:
 
-4. Start the Application:
+   npm install
+
+3.Build the Project:
+   
+   npm run build
+
+5. Start the Application:
+
    npm start
 
    
