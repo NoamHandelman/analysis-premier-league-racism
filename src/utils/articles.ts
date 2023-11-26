@@ -1,4 +1,4 @@
-import { chromium, webkit } from 'playwright';
+import { chromium } from 'playwright';
 import * as dfd from 'danfojs-node';
 import { columnsSentences, columnsToAnalyze } from '../lib/constants';
 import { DataFrame } from 'danfojs-node';
@@ -6,7 +6,7 @@ import path from 'path';
 
 export const scrapeRacismArticles = async () => {
   try {
-    const browser = await webkit.launch();
+    const browser = await chromium.launch();
     const context = await browser.newContext();
     const page = await context.newPage();
 
