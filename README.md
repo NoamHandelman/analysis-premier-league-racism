@@ -1,57 +1,64 @@
-# analysis-premier-league-racism
+# Analysis of Racism in the English Premier League
 
 ## Overview
-This project aims to automatically analyze incidents of racism in the English Premier League. Utilizing advanced data collection analysis techniques and natural language processing, the project aggregates and examines tweets and articles quantify racist incidents related to the league.
+This project aims to automatically analyze incidents of racism in the English Premier League. Utilizing advanced data collection and analysis techniques along with natural language processing, the project aggregates and examines tweets and articles to quantify racist incidents related to the league.
 
-## EndPoints
+## Endpoints
+1. **Quantitative Analysis (`/api/analysis/quantitative`)**: Presents quantitative data analysis performed by extracting data from CSV files and analyzing them using the Danfo.js library.
+2. **NLP Analysis (`/api/analysis/nlp`)**: Retrieves articles from Google using scraping techniques with the Playwright library and retrieves tweets from a CSV file, analyzing all data using the ChatGPT API.
 
-### 1. api/analysis/quantitative - presentation of quantitative data analysis which was performed by extracting the data from csv files and analyzing them using the Danfo.js library.
+## Production Access
+The production version can be accessed at:
+- Quantitative Analysis: [https://premier-league-racism.onrender.com/api/analysis/quantitative](https://premier-league-racism.onrender.com/api/analysis/quantitative)
+- NLP Analysis: [https://premier-league-racism.onrender.com/api/analysis/nlp](https://premier-league-racism.onrender.com/api/analysis/nlp)
 
-### 2. api/analysis/nlp - Retrieving articles from Google using a scraping technique with the Playwright library, retrieving tweets from a csv file and analyzing all of these using the chatGPT API.
-
-## Production
-
-The production version can be accessed at the following addresses -
-
-https://premier-league-racism.onrender.com/api/analysis/quantitative
-
-https://premier-league-racism.onrender.com/api/analysis/nlp
+**Note**: The NLP endpoint currently returns an empty response due to an issue with retrieving articles using Playwright in production. Locally, it functions as expected.
 
 ## Installation
 
 ### Option 1: Manual Setup
 To set up this project manually, follow these steps:
 
-1. **Clone the Repository**:
+1. Clone the Repository:
    ```bash
    git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
    cd analysis-premier-league-racism
+Install Dependencies:
 
-   ```bash
-   npm install
+bash
+Copy code
+npm install
+Build the Project:
 
-   ```bash
-   npm run build
+bash
+Copy code
+npm run build
+Start the Application:
 
-   ```bash
-   npm start
-   
-### Option2: Use Docker
-```bash
+bash
+Copy code
+npm start
+Option 2: Using Docker
+Alternatively, you can set up the project using Docker:
+
+Clone the Repository and Navigate to the Directory:
+
+bash
+Copy code
 git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
-   cd analysis-premier-league-racism
+cd analysis-premier-league-racism
+Build the Docker Image:
 
-```bash
-docker build -t pl-racism-analysis.
+bash
+Copy code
+docker build -t pl-racism-analysis .
+Run the Docker Container:
 
-docker run -p 3000:3000 analysis-premier-league-racism
-
+bash
+Copy code
+docker run -p 3000:3000 pl-racism-analysis
 Or, run the image directly from Docker Hub (if available):
 
-```bash
+bash
+Copy code
 docker run -p 3000:3000 noamhandelman/pl-racism-analysis:latest
-
-
-
-
-   
