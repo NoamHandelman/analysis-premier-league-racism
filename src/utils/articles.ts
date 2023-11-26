@@ -1,7 +1,8 @@
 import { chromium } from 'playwright';
 import * as dfd from 'danfojs-node';
-import path from 'path';
 import { columnsSentences, columnsToAnalyze } from '../lib/constants';
+import { DataFrame } from 'danfojs-node';
+import path from 'path';
 
 export const scrapeRacismArticles = async () => {
   try {
@@ -50,11 +51,7 @@ export const getParsedArticles = async () => {
   return articlesString;
 };
 
-export const analyzeArticlesDataset = async (column: string) => {
-  const articlesCsvPath = path.join(__dirname, '../../articles.csv');
-
-  const df = await dfd.readCSV(articlesCsvPath);
-
+export const analyzeArticlesDataset = async (df: DataFrame, column: string) => {
   let groupByColumn = df.groupby([column]).size();
 
   groupByColumn.dropNa({ axis: 1, inplace: true });
@@ -66,18 +63,18 @@ export const analyzeArticlesDataset = async (column: string) => {
 
   groupByColumn.rename({ [`${column}_Group`]: column }, { inplace: true });
 
-  const groupByColumnJsonObj = dfd.toJSON(groupByColumn, {
+  const groupByColumnArray = dfd.toJSON(groupByColumn, {
     format: 'column',
   }) as Record<string, string | number>[];
 
   let resultString = `${columnsSentences[column]}\n`;
 
-  groupByColumnJsonObj.forEach((obj) => {
+  groupByColumnArray.map((obj) => {
     const key = Object.keys(obj).find((key) => key !== 'applyOps');
     if (key) {
       const item = obj[key] as string;
-      const count = obj['applyOps'] as number;
-      resultString += `${item} - ${count}\n`;
+      const numbers = obj['applyOps'] as number;
+      resultString += `${item} - ${numbers}\n`;
     }
   });
 
@@ -85,10 +82,13 @@ export const analyzeArticlesDataset = async (column: string) => {
 };
 
 export const getFormattedArticlesAnalyze = async () => {
+  const articlesCsvPath = path.join(__dirname, '../../articles.csv');
+  const df = (await dfd.readCSV(articlesCsvPath)) as DataFrame;
+
   let combinedResults = '';
 
   for (const column of columnsToAnalyze) {
-    const analysisResult = await analyzeArticlesDataset(column);
+    const analysisResult = await analyzeArticlesDataset(df, column);
     combinedResults += analysisResult + '\n';
   }
 

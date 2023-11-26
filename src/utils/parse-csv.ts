@@ -1,5 +1,7 @@
 import * as dfd from 'danfojs-node';
 
+// Transform CSV file to JSON
+
 export const parseCsv = async <T>(pathToCsvFile: string) => {
   try {
     let df = await dfd.readCSV(pathToCsvFile);

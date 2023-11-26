@@ -10,16 +10,6 @@ export const columnsToAnalyze = [
   'platform',
 ];
 
-type ColumnsSentencesType = {
-  'factor team': string;
-  'experienced team': string;
-  event: string;
-  factor: string;
-  actions: string;
-  platform: string;
-  [key: string]: string;
-};
-
 export const columnsSentences: ColumnsSentencesType = {
   'factor team':
     'The groups that were involved in cases of racism, and the frequency of each group:',
@@ -30,7 +20,7 @@ export const columnsSentences: ColumnsSentencesType = {
   factor:
     'The factors that expressed racism, and the frequency of each factor:',
   actions:
-    'The steps taken against those who expressed racism, and the frequency of each step:',
+    'The actions taken against those expressing racism, and the frequency of each action:',
   platform:
     'The platform/place where incidents of racism occurred, and the frequency of each platform/place:',
 };
