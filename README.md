@@ -22,6 +22,7 @@ To set up this project manually, follow these steps:
 1. Clone the Repository:
    
    git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
+   
    cd analysis-premier-league-racism
    
 3. Install Dependencies:
@@ -43,6 +44,7 @@ Alternatively, you can set up the project using Docker:
 Clone the Repository and Navigate to the Directory:
 
 git clone https://github.com/NoamHandelman/analysis-premier-league-racism.git
+
 cd analysis-premier-league-racism
 
 
