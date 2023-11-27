@@ -18,6 +18,8 @@ The production version can be accessed at:
 
 **Note**: The NLP endpoint currently returns an empty response due to an issue with retrieving articles using Playwright in production. Locally, it functions as expected!
 
+**Note**: In these endpoints the response can take some time to arrive because the server is hosted by render, which takes a cold start approach to their machines (the machines wake up only when they detect traffic)
+
 ## Installation
 
 ### Option 1: Manual Setup
