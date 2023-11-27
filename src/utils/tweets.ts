@@ -25,7 +25,7 @@ export const getFormattedTweetsAnalyze = async () => {
 
   const df = await dfd.readCSV(tweetsCsvPath);
 
-  // Segmentation by percentage of nature of tweets
+  // Segmentation by percentage of nature  tweets
 
   const tweetsNumber = df['nature'].size;
   let groupByNature = df.groupby(['nature']).size();
