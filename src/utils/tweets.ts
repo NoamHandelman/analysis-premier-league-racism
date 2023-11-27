@@ -2,6 +2,8 @@ import { parseCsv } from './parse-csv';
 import * as dfd from 'danfojs-node';
 import path from 'path';
 
+// Transform tweets from tweets.csv to string
+
 export const getParsedTweets = async () => {
   const tweetsCsvPath = path.join(__dirname, '../../tweets.csv');
   const tweets = await parseCsv<Tweet>(tweetsCsvPath);
@@ -15,6 +17,8 @@ export const getParsedTweets = async () => {
     .join('\n');
   return tweetsString;
 };
+
+// // Analyzed tweets.csv ,transform quantitative analyze to string and return it
 
 export const getFormattedTweetsAnalyze = async () => {
   const tweetsCsvPath = path.join(__dirname, '../../tweets.csv');

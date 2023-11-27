@@ -4,6 +4,8 @@ import { columnsSentences, columnsToAnalyze } from '../lib/constants';
 import { DataFrame } from 'danfojs-node';
 import path from 'path';
 
+// Scrape articles from google
+
 export const scrapeRacismArticles = async () => {
   try {
     const browser = await chromium.launch();
@@ -43,6 +45,8 @@ export const scrapeRacismArticles = async () => {
   }
 };
 
+// Transform scrape articles to one string and return it
+
 export const getParsedArticles = async () => {
   const articles = await scrapeRacismArticles();
   const articlesString = articles
@@ -50,6 +54,8 @@ export const getParsedArticles = async () => {
     .join('\n');
   return articlesString;
 };
+
+// Analyze the articles.csv for the quantitative endpoint
 
 export const analyzeArticlesDataset = async (df: DataFrame, column: string) => {
   let groupByColumn = df.groupby([column]).size();
@@ -80,6 +86,8 @@ export const analyzeArticlesDataset = async (df: DataFrame, column: string) => {
 
   return resultString;
 };
+
+// Transform quantitative analyze to string and return it
 
 export const getFormattedArticlesAnalyze = async () => {
   const articlesCsvPath = path.join(__dirname, '../../articles.csv');
