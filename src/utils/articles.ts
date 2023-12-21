@@ -21,8 +21,9 @@ export const scrapeRacismArticles = async () => {
     for (let i = 0; i < 8; i++) {
       await page.goto(`${baseUrl}${i + 1}`);
 
-      const currentPageArticles: Article[] = await page.$$eval(
-        '.GI74Re.nDgy9d span[dir="ltr"]',
+      const locator = page.locator('.GI74Re.nDgy9d span[dir="ltr"]');
+
+      const currentPageArticles: Article[] = await locator.evaluateAll(
         (spans, articleNumber) =>
           spans.map((span, index) => {
             if (!span.textContent) throw new Error('Span is null');
